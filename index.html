@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<!-- Московский счётчик Метрики подключить после согласования. -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Бесплатное офлайн-занятие по нейросетям в artTech Москва. Попробуйте инструменты ИИ на практике. Москва, пр. Мира 68с1 А.">
+<link rel="canonical" href="https://artkhv.github.io/arttech-moscow/">
+<title>artTech Москва — Нейросети | Бесплатное занятие</title>
+<style>
+@font-face{font-family:'TT Firs Text';src:url('assets/fonts/TT_Firs_Text_Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'TT Firs Text';src:url('assets/fonts/TT_Firs_Text_Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'TT Firs Text';src:url('assets/fonts/TT_Firs_Text_DemiBold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'TT Firs Text';src:url('assets/fonts/TT_Firs_Text_Black.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:'TT Travels Next';src:url('assets/fonts/TT_Travels_Next_Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'TT Travels Next';src:url('assets/fonts/TT_Travels_Next_Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'TT Travels Next';src:url('assets/fonts/TT_Travels_Next_Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+
+:root{
+  --blue:#1E11C9;--violet:#5532D6;--dark-violet:#5B18B2;--purple:#5E2987;
+  --magenta:#803991;--pink:#CC5E90;--pink-light:#DB7DAD;--coral:#F74A46;
+  --red:#F70C09;--black:#0C0C0C;--white:#FFFFFF;--gray:#CFCAC4;--bg-light:#F5F3F0;
+  --font-display:'TT Travels Next',sans-serif;
+  --font-text:'TT Firs Text',sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-text);font-weight:400;background:var(--black);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3{overflow-wrap:normal;word-wrap:normal;word-break:keep-all;hyphens:none;-webkit-hyphens:none}
+p,span,div,li,a{overflow-wrap:break-word;word-wrap:break-word}
+p,.hero-sub,.value-sub,.formats-sub,.process-sub,.teachers-sub,.args-sub,.demo-sub,.result-caption{text-wrap:pretty}
+
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+
+.section-number{font-family:var(--font-display);font-size:1rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--pink-light);margin-bottom:24px;display:flex;align-items:center;gap:14px;word-break:keep-all;overflow-wrap:normal}
+.section-number::before{content:'';width:40px;height:2px;background:var(--violet)}
+
+h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.02em;text-wrap:balance}
+
+/* HEADER */
+.header{position:relative;z-index:100;padding:20px 0;background:transparent}
+.header-inner{display:flex;align-items:center}
+.logo-link{display:flex;align-items:center;text-decoration:none}
+.logo-img{height:90px;width:auto;display:block}
+
+/* HERO */
+.hero{display:flex;align-items:center;position:relative;background:var(--black);overflow:hidden;padding-bottom:40px}
+.hero::before{content:'';position:absolute;top:-30%;right:-20%;width:900px;height:900px;background:radial-gradient(circle,rgba(85,50,214,.3) 0%,rgba(30,17,201,.1) 50%,transparent 70%);filter:blur(60px);animation:heroGlow 8s ease-in-out infinite alternate}
+.hero::after{content:'';position:absolute;bottom:-20%;left:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(91,24,178,.22) 0%,transparent 60%);filter:blur(80px);animation:heroGlow 10s ease-in-out infinite alternate-reverse}
+@keyframes heroGlow{0%{transform:translate(0,0) scale(1)}100%{transform:translate(40px,-30px) scale(1.1)}}
+.hero-content{position:relative;z-index:2;padding:40px 0 80px}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:12px 26px;background:rgba(85,50,214,.18);border:1px solid rgba(85,50,214,.35);border-radius:100px;font-family:var(--font-text);font-size:1.05rem;font-weight:500;color:var(--pink-light);margin-bottom:40px;backdrop-filter:blur(10px)}
+.hero-badge::before{content:'';width:10px;height:10px;background:var(--coral);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.hero h1{font-size:clamp(1.7rem,7.5vw,7rem);font-weight:700;line-height:1;letter-spacing:-.035em;margin-bottom:32px;max-width:1150px}
+.hero h1 .accent{background:linear-gradient(135deg,var(--violet),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-family:var(--font-text);font-size:clamp(1.35rem,2.2vw,1.75rem);font-weight:400;color:var(--white);max-width:760px;line-height:1.4}
+.hero-stats{display:flex;gap:72px;margin-top:64px;flex-wrap:wrap}
+.hero-stat-num{font-family:var(--font-display);font-size:3.4rem;font-weight:700;background:linear-gradient(135deg,var(--white),var(--gray));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.hero-stat-label{font-family:var(--font-text);font-size:1.05rem;color:var(--white);margin-top:10px;font-weight:500;opacity:.75}
+
+/* RESULT */
+.result{padding:110px 0;background:var(--black);position:relative}
+.result::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(85,50,214,.3),transparent)}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.result-image{border-radius:28px;overflow:hidden;position:relative;aspect-ratio:4/3;border:1px solid rgba(85,50,214,.25)}
+.result-image img{width:100%;height:100%;object-fit:cover;display:block}
+.result-image::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(85,50,214,.12),transparent 50%);pointer-events:none}
+.result h2{font-size:clamp(1.5rem,4.2vw,4rem);font-weight:700;line-height:1.05;margin-bottom:24px}
+.result-caption{font-family:var(--font-text);color:var(--white);margin-top:16px;font-size:1.3rem;line-height:1.5;margin-bottom:36px}
+.result-items{display:flex;flex-direction:column;gap:14px}
+.result-item{display:flex;align-items:flex-start;gap:20px;padding:22px 28px;background:rgba(85,50,214,.1);border:1px solid rgba(85,50,214,.2);border-radius:18px;transition:all .4s cubic-bezier(.16,1,.3,1)}
+.result-item:hover{background:rgba(85,50,214,.18);border-color:rgba(85,50,214,.4);transform:translateX(8px)}
+.result-item-num{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--pink-light);min-width:36px;padding-top:2px}
+.result-item p{font-family:var(--font-text);font-size:1.15rem;font-weight:500;color:var(--white);line-height:1.45}
+
+/* VALUE */
+.value{padding:110px 0;background:linear-gradient(180deg,var(--black) 0%,#0a0a1a 100%)}
+.value-header{text-align:center;margin-bottom:60px}
+.value h2{font-size:clamp(1.5rem,4.2vw,4rem);font-weight:700;margin-bottom:20px;line-height:1.05}
+.value-sub{font-family:var(--font-text);font-size:1.35rem;color:var(--white);max-width:680px;margin:0 auto;line-height:1.5;opacity:.85}
+.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.value-card{padding:40px 34px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:22px;transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+.value-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--violet),var(--pink));opacity:0;transition:opacity .4s}
+.value-card:hover{background:rgba(85,50,214,.12);border-color:rgba(85,50,214,.3);transform:translateY(-4px)}
+.value-card:hover::before{opacity:1}
+.value-card-num{font-family:var(--font-display);font-size:1rem;font-weight:700;letter-spacing:.15em;color:var(--pink-light);margin-bottom:20px;display:block}
+.value-card h3{font-size:1.55rem;font-weight:700;margin-bottom:16px;line-height:1.2;color:var(--white)}
+.value-card p{font-family:var(--font-text);font-size:1.12rem;color:var(--white);line-height:1.5;opacity:.88}
+
+/* FORMATS */
+.formats{padding:110px 0;background:var(--bg-light);color:var(--black)}
+.formats h2{font-size:clamp(1.5rem,4.2vw,4rem);font-weight:700;margin-bottom:20px;color:var(--black);line-height:1.05}
+.formats-sub{font-family:var(--font-text);font-size:1.35rem;color:var(--black);margin-bottom:56px;max-width:680px;line-height:1.5;opacity:.78}
+.formats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.format-card{padding:44px 34px;background:var(--white);border-radius:24px;border:1px solid rgba(12,12,12,.08);transition:all .5s cubic-bezier(.16,1,.3,1);position:relative}
+.format-card:hover{transform:translateY(-6px);box-shadow:0 24px 64px rgba(85,50,214,.15);border-color:var(--violet)}
+.format-card-tag{display:inline-block;padding:9px 20px;background:var(--black);color:var(--white);font-family:var(--font-display);font-size:.85rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;margin-bottom:30px}
+.format-card h3{font-size:1.7rem;font-weight:700;margin-bottom:18px;color:var(--black);line-height:1.2}
+.format-card p{font-family:var(--font-text);font-size:1.15rem;color:var(--black);line-height:1.5;opacity:.78}
+
+/* PROCESS */
+.process{padding:110px 0;background:var(--black)}
+.process-intro{max-width:860px;margin-bottom:56px}
+.process h2{font-size:clamp(1.5rem,4.2vw,4rem);font-weight:700;margin-bottom:20px;line-height:1.05}
+.process-sub{font-family:var(--font-text);font-size:1.35rem;color:var(--white);line-height:1.5;opacity:.85}
+.process-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:22px}
+.process-img{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:16/10;border:1px solid rgba(255,255,255,.1)}
+.process-img:nth-child(2){aspect-ratio:auto;height:100%}
+.process-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.process-img:hover img{transform:scale(1.05)}
+.process-img-caption{position:absolute;bottom:24px;left:24px;padding:12px 24px;background:rgba(12,12,12,.78);backdrop-filter:blur(16px);border-radius:100px;font-family:var(--font-display);font-size:1.05rem;font-weight:500;color:var(--white);border:1px solid rgba(255,255,255,.12)}
+
+/* WHO */
+.who{padding:110px 0;background:var(--black)}
+.who h2{font-size:clamp(1.5rem,4.2vw,4rem);font-weight:700;margin-bottom:56px;line-height:1.05}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.who-card{padding:44px 34px;border:1px solid rgba(255,255,255,.1);border-radius:22px;background:rgba(255,255,255,.03);transition:all .4s}
+.who-card:hover{border-color:rgba(85,50,214,.4);background:rgba(85,50,214,.08)}
+.who-card-tag{display:inline-block;padding:9px 20px;background:linear-gradient(135deg,var(--violet),var(--dark-violet));color:var(--white);font-family:var(--font-display);font-size:.85rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;margin-bottom:26px}
+.who-card h3{font-size:1.55rem;font-weight:700;margin-bottom:22px;color:var(--white);line-height:1.2}
+.who-card ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+.who-card li{font-family:var(--font-text);font-size:1.12rem;color:var(--white);padding-left:22px;position:relative;line-height:1.45;opacity:.88}
+.who-card li::before{content:'—';position:absolute;left:0;color:var(--violet);font-weight:700}
+
+/* OUTCOME */
+.outcome{padding:110px 0;background:linear-gradient(135deg,var(--blue) 0%,var(--dark-violet) 100%);position:relative;overflow:hidden}
+.outcome::before{content:'';position:absolute;top:-50%;right:-30%;width:800px;height:800px;background:radial-gradient(circle,rgba(219,125,173,.2) 0%,transparent 60%);filter:blur(80px)}
+.outcome-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.outcome h2{font-size:clamp(1.5rem,4.2vw,4rem);font-weight:700;margin-bottom:20px;line-height:1.05}
+.outcome-sub{font-family:var(--font-text);font-size:1.35rem;color:var(--white);line-height:1.5;opacity:.9}
+.outcome-list{display:flex;flex-direction:column;gap:14px}
+.outcome-item{display:flex;align-items:center;gap:20px;padding:22px 28px;background:rgba(255,255,255,.14);border-radius:16px;backdrop-filter:blur(10px);font-family:var(--font-text);font-size:1.18rem;font-weight:500;color:var(--white);transition:all .3s}
+.outcome-item:hover{background:rgba(255,255,255,.2);transform:translateX(6px)}
+.outcome-check{width:34px;height:34px;min-width:34px;background:rgba(255,255,255,.22);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;font-weight:700}
+
+/* TEACHERS */
+.teachers{padding:110px 0;background:var(--bg-light);color:var(--black)}
+.teachers h2{font-size:clamp(1.5rem,4.2vw,4rem);font-weight:700;margin-bottom:20px;color:var(--black);line-height:1.05}
+.teachers-sub{font-family:var(--font-text);font-size:1.35rem;color:var(--black);margin-bottom:56px;max-width:720px;line-height:1.5;opacity:.78}
+.teachers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.teacher-card{background:var(--white);border-radius:24px;overflow:hidden;border:1px solid rgba(12,12,12,.08);transition:all .4s}
+.teacher-card:hover{transform:translateY(-6px);box-shadow:0 20px 56px rgba(85,50,214,.15)}
+.teacher-photo{width:100%;aspect-ratio:1/1;position:relative;overflow:hidden;background:var(--bg-light)}
+.teacher-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.teacher-card:hover .teacher-photo img{transform:scale(1.06)}
+.teacher-body{padding:34px 30px 38px}
+.teacher-card h3{font-size:1.5rem;font-weight:700;color:var(--black);margin-bottom:20px}
+.teacher-tags{display:flex;flex-wrap:wrap;gap:8px}
+.teacher-tag{padding:9px 18px;background:rgba(85,50,214,.1);border-radius:100px;font-family:var(--font-display);font-size:.92rem;font-weight:500;color:var(--violet)}
+
+/* EMOTION */
+.emotion{padding:130px 0;background:var(--black);text-align:center;position:relative;overflow:hidden}
+.emotion::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:450px;background:radial-gradient(ellipse,rgba(85,50,214,.2) 0%,transparent 60%);filter:blur(60px)}
+.emotion-content{position:relative;z-index:2}
+.emotion h2{font-size:clamp(1.8rem,5vw,4.4rem);font-weight:700;margin-bottom:48px;max-width:950px;margin-left:auto;margin-right:auto;line-height:1.08}
+.emotion-line{font-family:var(--font-display);font-size:1.55rem;font-weight:500;color:var(--white);margin-bottom:16px;line-height:1.6;opacity:.8}
+.emotion-final{font-family:var(--font-display);color:var(--white);margin-top:44px;font-size:1.75rem;font-weight:700}
+
+/* FINAL */
+.cta{padding:150px 0;background:linear-gradient(180deg,var(--black) 0%,#0e0828 100%);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(circle,rgba(85,50,214,.28) 0%,transparent 60%);filter:blur(80px)}
+.cta-content{position:relative;z-index:2}
+.cta h2{font-size:clamp(1.5rem,4.5vw,4.4rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;background:linear-gradient(135deg,var(--white) 0%,var(--pink-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:32px;max-width:1100px;margin-left:auto;margin-right:auto}
+.cta-sub{font-family:var(--font-display);font-size:1.35rem;font-weight:500;color:var(--white);letter-spacing:.04em;opacity:.75}
+
+/* ARGS - Почему завтра будет поздно */
+.args{padding:110px 0;background:linear-gradient(180deg,var(--black) 0%,#1a0a24 50%,var(--black) 100%);position:relative;overflow:hidden}
+.args::before{content:'';position:absolute;top:20%;left:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(247,74,70,.15) 0%,transparent 60%);filter:blur(100px)}
+.args::after{content:'';position:absolute;bottom:10%;right:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(85,50,214,.2) 0%,transparent 60%);filter:blur(100px)}
+.args-header{text-align:center;margin-bottom:72px;position:relative;z-index:2}
+.args h2{font-size:clamp(1.6rem,5vw,4.8rem);font-weight:700;margin-bottom:20px;line-height:1;background:linear-gradient(135deg,var(--white) 0%,var(--coral) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.args-sub{font-family:var(--font-text);font-size:1.35rem;color:var(--white);opacity:.75}
+.args-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative;z-index:2}
+.args-column{padding:40px 32px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:24px;transition:all .5s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column}
+.args-column:hover{background:rgba(85,50,214,.1);border-color:rgba(85,50,214,.3);transform:translateY(-6px)}
+.args-column-label{font-family:var(--font-display);font-size:.9rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--pink-light);padding-bottom:24px;margin-bottom:28px;border-bottom:1px solid rgba(255,255,255,.1)}
+.args-stat{margin-bottom:32px}
+.args-stat:last-of-type{margin-bottom:28px}
+.args-number-row{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.args-big-number{font-family:var(--font-display);font-size:clamp(3.5rem,5vw,4.8rem);font-weight:700;line-height:.95;letter-spacing:-.03em;background:linear-gradient(135deg,var(--white) 0%,var(--pink-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.args-unit{font-family:var(--font-display);font-size:clamp(1.4rem,2vw,2rem);font-weight:700;color:var(--pink-light);line-height:1;letter-spacing:-.02em}
+.args-stat-text{font-family:var(--font-text);font-size:1.1rem;color:var(--white);line-height:1.4;margin-bottom:6px;font-weight:500}
+.args-source{font-family:var(--font-text);font-size:.85rem;color:var(--white);opacity:.5;font-weight:400}
+.args-quote{margin-top:auto;padding-top:28px;border-top:1px solid rgba(255,255,255,.1);font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--coral);line-height:1.3;font-style:italic}
+
+/* DEMO - пример нейрофотосессии */
+.demo{padding:100px 0;background:var(--bg-light);color:var(--black)}
+.demo-intro{max-width:780px;margin-bottom:48px}
+.demo h2{font-size:clamp(1.5rem,3.5vw,3.2rem);font-weight:700;margin-bottom:16px;color:var(--black);line-height:1.1}
+.demo-sub{font-family:var(--font-text);font-size:1.2rem;color:var(--black);opacity:.75;line-height:1.5}
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+.demo-item{background:var(--white);border-radius:24px;overflow:hidden;border:1px solid rgba(12,12,12,.08);transition:all .4s;display:flex;flex-direction:column}
+.demo-item:hover{transform:translateY(-4px);box-shadow:0 20px 56px rgba(85,50,214,.12)}
+.demo-media{width:100%;background:#0c0c0c;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;height:480px;flex-shrink:0}
+.demo-media img,.demo-media video{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+.demo-body{padding:28px 30px 32px;flex:1;display:flex;flex-direction:column}
+.demo-label{display:inline-block;padding:6px 14px;background:var(--violet);color:var(--white);font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:100px;margin-bottom:14px}
+.demo-item h3{font-size:1.3rem;font-weight:700;color:var(--black);margin-bottom:10px;line-height:1.2}
+.demo-item p{font-family:var(--font-text);font-size:1.05rem;color:var(--black);opacity:.7;line-height:1.5}
+
+/* BUTTONS */
+.btn-primary{display:inline-flex;align-items:center;gap:12px;padding:18px 36px;background:linear-gradient(135deg,var(--violet) 0%,var(--blue) 100%);color:var(--white);font-family:var(--font-display);font-size:1.1rem;font-weight:700;letter-spacing:-.01em;border:none;border-radius:100px;cursor:pointer;transition:all .3s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(85,50,214,.35);text-decoration:none}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--pink) 0%,var(--violet) 100%);opacity:0;transition:opacity .3s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(85,50,214,.5)}
+.btn-primary:hover::before{opacity:1}
+.btn-primary:active{transform:translateY(0)}
+.btn-primary span,.btn-primary svg{position:relative;z-index:2}
+.btn-primary svg{transition:transform .3s}
+.btn-primary:hover svg{transform:translateX(4px)}
+.hero-btn{margin-top:40px}
+.cta-btn{margin-top:36px;padding:22px 44px;font-size:1.25rem}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(12,12,12,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .3s}
+.modal-overlay.active{display:flex;opacity:1}
+.modal{background:#1a1133;border:1px solid rgba(255,255,255,.1);border-radius:28px;max-width:520px;width:100%;padding:44px 40px;position:relative;transform:scale(.95);transition:transform .3s cubic-bezier(.16,1,.3,1);box-shadow:0 24px 80px rgba(85,50,214,.3)}
+.modal-form{max-width:680px;padding:0;background:#fff;overflow:hidden}
+.modal-form .modal-close{background:rgba(12,12,12,.85);color:#fff;z-index:5}
+.modal-form .modal-close:hover{background:rgba(12,12,12,.95)}
+.modal-form-frame{width:100%;height:min(85vh,720px);position:relative;background:#fff;border-radius:28px;overflow:hidden}
+.modal-form-frame iframe{width:100%;height:100%;border:0;display:block}
+.modal-overlay.active .modal{transform:scale(1)}
+.modal-close{position:absolute;top:18px;right:18px;width:40px;height:40px;border:none;background:rgba(255,255,255,.08);border-radius:50%;color:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.modal-close:hover{background:rgba(255,255,255,.15);transform:rotate(90deg)}
+.modal-title{font-family:var(--font-display);font-size:1.8rem;font-weight:700;line-height:1.15;margin-bottom:16px;color:var(--white);letter-spacing:-.02em}
+.modal-text{font-family:var(--font-text);font-size:1.05rem;line-height:1.5;color:var(--white);opacity:.85;margin-bottom:12px}
+.modal-hint{display:inline-block;padding:8px 16px;background:rgba(85,50,214,.2);border:1px solid rgba(85,50,214,.4);border-radius:100px;font-family:var(--font-text);font-size:.95rem;font-weight:500;color:var(--pink-light);margin-bottom:32px}
+.modal-socials{display:flex;flex-direction:column;gap:12px}
+.social-btn{display:flex;align-items:center;gap:16px;padding:18px 22px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;color:var(--white);font-family:var(--font-display);font-size:1.05rem;font-weight:500;text-decoration:none;transition:all .25s cubic-bezier(.16,1,.3,1)}
+.social-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);transform:translateX(6px)}
+.social-btn-icon{width:44px;height:44px;min-width:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.social-btn-tg .social-btn-icon{background:linear-gradient(135deg,#2AABEE,#229ED9)}
+.social-btn-vk .social-btn-icon{background:#0077FF}
+.social-btn-max .social-btn-icon{background:transparent;padding:0;overflow:hidden}
+.social-btn-icon-img{overflow:hidden}
+.social-btn-icon-img img{width:100%;height:100%;object-fit:cover;display:block;border-radius:12px}
+.social-btn-text{display:flex;flex-direction:column;gap:2px}
+.social-btn-name{font-weight:700;font-size:1.1rem}
+.social-btn-handle{font-size:.9rem;opacity:.6;font-family:var(--font-text);font-weight:400}
+.social-btn-arrow{margin-left:auto;opacity:.5;transition:all .25s}
+.social-btn:hover .social-btn-arrow{opacity:1;transform:translateX(4px)}
+
+@media (max-width:600px){
+  .hero-btn{margin-top:28px;padding:16px 28px;font-size:1rem}
+  .cta-btn{margin-top:28px;padding:18px 32px;font-size:1.1rem}
+  .modal{padding:36px 26px 32px;border-radius:24px}
+  .modal-form{padding:0;border-radius:20px}
+  .modal-form-frame{height:88vh;border-radius:20px}
+  .modal-title{font-size:1.4rem}
+  .modal-text{font-size:.98rem}
+  .modal-hint{font-size:.88rem;padding:7px 14px;margin-bottom:24px}
+  .social-btn{padding:14px 18px;font-size:1rem}
+  .social-btn-icon{width:40px;height:40px;min-width:40px}
+  .social-btn-name{font-size:1rem}
+}
+
+/* FOOTER */
+.footer{padding:44px 0 52px;border-top:1px solid rgba(255,255,255,.08);font-family:var(--font-text);font-size:.92rem;line-height:1.6;color:rgba(255,255,255,.55)}
+.footer-org{display:flex;flex-wrap:wrap;gap:4px 20px;margin-bottom:14px}
+.footer-docs{display:flex;flex-wrap:wrap;gap:8px 26px;margin-bottom:18px}
+.footer a{color:rgba(255,255,255,.78);text-decoration:underline;text-decoration-color:rgba(255,255,255,.25);text-underline-offset:3px;transition:color .25s}
+.footer a:hover{color:var(--pink-light)}
+.footer-cookie{max-width:820px;margin-bottom:10px;font-size:.85em}
+@media (max-width:600px){.footer{font-size:.85rem;padding:36px 0 44px}.footer-docs{flex-direction:column}}
+
+/* ANIM */
+.fade-up{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media (max-width:900px){
+  .result-grid,.outcome-content,.process-grid,.args-grid,.demo-grid{grid-template-columns:1fr;gap:20px}
+  .value-grid,.formats-grid,.who-grid,.teachers-grid{grid-template-columns:1fr}
+  .hero-stats{gap:40px}
+  .hero{padding:0 0 40px}
+  .hero-content{padding:30px 0 50px}
+  .logo-img{height:58px}
+  .header{padding:16px 0}
+  .result,.value,.formats,.process,.who,.outcome,.teachers,.args,.demo,.cta{padding:80px 0}
+  .container{padding:0 20px}
+  .demo-media{height:360px}
+}
+@media (max-width:600px){
+  .hero h1{font-size:1.8rem;line-height:1.15;letter-spacing:-.015em}
+  .hero-sub{font-size:1.02rem;line-height:1.45}
+  .hero-badge{font-size:.82rem;padding:8px 16px}
+  .hero-stat-num{font-size:2.1rem}
+  .hero-stat-label{font-size:.85rem}
+  .hero-content{padding:20px 0 40px}
+  .logo-img{height:48px}
+  .header{padding:14px 0}
+  .result h2,.value h2,.formats h2,.process h2,.who h2,.outcome h2,.teachers h2,.demo h2{font-size:1.55rem;line-height:1.2;letter-spacing:-.01em}
+  .args h2{font-size:1.6rem;line-height:1.2}
+  .cta h2{font-size:1.4rem;line-height:1.25}
+  .result-caption,.value-sub,.formats-sub,.process-sub,.outcome-sub,.teachers-sub,.args-sub,.demo-sub{font-size:1.02rem}
+  .section-number{font-size:.72rem;letter-spacing:.1em;gap:10px}
+  .section-number::before{width:24px}
+  .result-item p,.who-card li,.outcome-item,.value-card p,.format-card p{font-size:.98rem}
+  .value-card h3,.who-card h3,.format-card h3,.teacher-card h3,.demo-item h3{font-size:1.18rem}
+  .args-big-number{font-size:2.8rem}
+  .args-unit{font-size:1.1rem}
+  .args-stat-text{font-size:.98rem}
+  .args-column{padding:28px 22px}
+  .value-card,.who-card,.format-card{padding:28px 22px}
+  .demo-media{height:280px}
+  .demo-body{padding:22px}
+  .container{padding:0 16px}
+  .result,.value,.formats,.process,.who,.outcome,.teachers,.args,.demo,.cta{padding:64px 0}
+}
+@media (max-width:400px){
+  .hero h1{font-size:1.55rem}
+  .hero-sub{font-size:.95rem}
+  .hero-badge{font-size:.72rem;padding:7px 14px}
+  .hero-stat-num{font-size:1.85rem}
+  .result h2,.value h2,.formats h2,.process h2,.who h2,.outcome h2,.teachers h2,.demo h2,.args h2{font-size:1.35rem;line-height:1.25}
+  .cta h2{font-size:1.22rem}
+  .section-number{font-size:.65rem;letter-spacing:.08em}
+  .args-big-number{font-size:2.4rem}
+  .args-unit{font-size:.95rem}
+  .container{padding:0 14px}
+}
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#" class="logo-link">
+        <img src="assets/img/logo-white.png" alt="artTech" class="logo-img">
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-content fade-up">
+      <div class="hero-badge">Бесплатное занятие — офлайн в Москве</div>
+      <h1>Как проходят первые 1,5 часа знакомства с <span class="accent">нейросетями</span></h1>
+      <p class="hero-sub">Без лекций. С практикой, результатом и пониманием, как это применить под себя</p>
+      <button type="button" class="btn-primary hero-btn" onclick="openSignup();"><span>Записаться</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      <div class="hero-stats">
+        <div><div class="hero-stat-num">1,5 ч</div><div class="hero-stat-label">длительность занятия</div></div>
+        <div><div class="hero-stat-num">0 ₽</div><div class="hero-stat-label">бесплатно</div></div>
+        <div><div class="hero-stat-num">100%</div><div class="hero-stat-label">практика</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="result">
+  <div class="container">
+    <div class="result-grid">
+      <div class="fade-up result-image">
+        <img src="assets/img/hero-class.png" alt="Процесс работы с нейросетью на занятии">
+      </div>
+      <div class="fade-up">
+        <div class="section-number">01 — Результат</div>
+        <h2>Что можно сделать за 1–1,5 часа с нейросетями</h2>
+        <p class="result-caption">Не теория и не обзор. Ты работаешь руками и уходишь с конкретным результатом.</p>
+        <div class="result-items">
+          <div class="result-item"><div class="result-item-num">01</div><p>Собрать первый результат — изображение, текст или решение задачи</p></div>
+          <div class="result-item"><div class="result-item-num">02</div><p>Понять, как это применить в своей работе или жизни</p></div>
+          <div class="result-item"><div class="result-item-num">03</div><p>Увидеть, где именно нейросети экономят время</p></div>
+          <div class="result-item"><div class="result-item-num">04</div><p>Попробовать инструменты, которые уже используют в реальных проектах</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="value">
+  <div class="container">
+    <div class="value-header fade-up">
+      <div class="section-number" style="justify-content:center">02 — Ценность</div>
+      <h2>Что даёт это занятие</h2>
+      <p class="value-sub">За короткое время ты получаешь реальное понимание, а не очередную презентацию</p>
+    </div>
+    <div class="value-grid">
+      <div class="value-card fade-up"><span class="value-card-num">01</span><h3>Понимание без терминов</h3><p>Разбираешься, как на самом деле работают нейросети — простым языком</p></div>
+      <div class="value-card fade-up"><span class="value-card-num">02</span><h3>Практика под свои задачи</h3><p>Пробуешь создавать тексты, изображения и решения для своей сферы</p></div>
+      <div class="value-card fade-up"><span class="value-card-num">03</span><h3>Подбор инструментов</h3><p>Понимаешь, какие инструменты подойдут именно тебе</p></div>
+      <div class="value-card fade-up"><span class="value-card-num">04</span><h3>Ускорение работы</h3><p>Видишь, как можно убрать рутину и работать быстрее</p></div>
+      <div class="value-card fade-up"><span class="value-card-num">05</span><h3>Идеи для заработка</h3><p>Получаешь конкретные идеи, как применить это в своей сфере</p></div>
+      <div class="value-card fade-up"><span class="value-card-num">06</span><h3>Ясность направления</h3><p>Понимаешь, стоит ли дальше углубляться в это направление</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="formats">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-number">03 — Формат</div>
+      <h2>Выбери, с чем хочешь поработать</h2>
+      <p class="formats-sub">Каждый формат — практический. Ты уходишь с результатом</p>
+    </div>
+    <div class="formats-grid">
+      <div class="format-card fade-up"><span class="format-card-tag">Визуал</span><h3>Нейрофотосессия и визуал</h3><p>Создаёшь изображения и контент с помощью нейросетей. Делаешь свой первый визуал прямо на занятии</p></div>
+      <div class="format-card fade-up"><span class="format-card-tag">Данные</span><h3>Аналитика и таблицы</h3><p>Упрощаешь задачи, автоматизируешь процессы и работаешь с данными — включая Excel</p></div>
+      <div class="format-card fade-up"><span class="format-card-tag">Контент</span><h3>Контент и работа с ИИ</h3><p>Генерируешь тексты, идеи. Разбираешься, как использовать нейросети в работе или для заработка</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="demo">
+  <div class="container">
+    <div class="fade-up demo-intro">
+      <div class="section-number">Пример · Нейрофотосессия и AI-модель</div>
+      <h2>Почувствуй разницу. Один промпт — два результата</h2>
+      <p class="demo-sub">Слева — обычный запрос. Справа — то, что получается, когда знаешь, что и как просить. Этому учим на занятии.</p>
+    </div>
+    <div class="demo-grid fade-up">
+      <div class="demo-item">
+        <div class="demo-media">
+          <img src="assets/img/neuro-comparison.jpg" alt="Пример нейрофотосессии: до и после">
+        </div>
+        <div class="demo-body">
+          <span class="demo-label">Сравнение</span>
+          <h3>До и после обучения</h3>
+          <p>Разница не в нейросети, а в промпте. 1 302 просмотра против 10,5 тыс — реальный результат ученика.</p>
+        </div>
+      </div>
+      <div class="demo-item">
+        <div class="demo-media">
+          <video src="assets/img/neuro-demo.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="demo-body">
+          <span class="demo-label">Видео</span>
+          <h3>Как это работает в деле</h3>
+          <p>Видео, сгенерированное нейросетью за пару минут. То, что раньше делала целая продакшн-команда.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="container">
+    <div class="fade-up process-intro">
+      <div class="section-number">04 — Как проходит</div>
+      <h2>Ты не просто слушаешь. Ты пробуешь</h2>
+      <p class="process-sub">Смотришь, задаёшь вопросы и постепенно начинаешь понимать, где это может пригодиться именно тебе</p>
+    </div>
+    <div class="process-grid fade-up">
+      <div class="process-img"><img src="assets/img/classroom-new.jpg" alt="Ученицы работают на занятии"><div class="process-img-caption">Атмосфера занятия</div></div>
+      <div class="process-img"><img src="assets/img/workspace.jpg" alt="Работа за iMac"><div class="process-img-caption">Работа с нейросетью</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="who">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-number">05 — Для кого</div>
+      <h2>Как ты планируешь использовать нейросети?</h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card fade-up"><span class="who-card-tag">Доход</span><h3>Для себя и заработка</h3><ul><li>Попробовать фриланс с ИИ</li><li>Брать заказы на генерацию</li><li>Освоить новый инструмент заработка</li></ul></div>
+      <div class="who-card fade-up"><span class="who-card-tag">Карьера</span><h3>В работе или успехе</h3><ul><li>Использовать ИИ в текущих задачах</li><li>Быстрее выполнять работу</li><li>Выделяться среди специалистов</li></ul></div>
+      <div class="who-card fade-up"><span class="who-card-tag">Бизнес</span><h3>В своём деле или проекте</h3><ul><li>Автоматизировать процессы</li><li>Ускорить маркетинг и контент</li><li>Снизить нагрузку и расходы</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="outcome">
+  <div class="container">
+    <div class="outcome-content">
+      <div class="fade-up">
+        <div class="section-number" style="color:rgba(255,255,255,.9)">06 — Итог</div>
+        <h2>Что ты получишь после занятия</h2>
+        <p class="outcome-sub">Конкретные вещи, с которыми уходишь домой</p>
+      </div>
+      <div class="outcome-list fade-up">
+        <div class="outcome-item"><div class="outcome-check">✓</div>Понимание, как применять нейросети под свои задачи</div>
+        <div class="outcome-item"><div class="outcome-check">✓</div>Первый результат, сделанный своими руками</div>
+        <div class="outcome-item"><div class="outcome-check">✓</div>Список инструментов для дальнейшей работы</div>
+        <div class="outcome-item"><div class="outcome-check">✓</div>Идеи, как упростить работу или начать зарабатывать</div>
+        <div class="outcome-item"><div class="outcome-check">✓</div>Понимание, куда двигаться дальше</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="teachers">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-number">07 — Преподаватели</div>
+      <h2>С тобой работает человек, который сам это применяет</h2>
+      <p class="teachers-sub">Не теоретики. Практики, которые внедряют ИИ в реальные проекты</p>
+    </div>
+    <div class="teachers-grid">
+      <div class="teacher-card fade-up"><div class="teacher-photo"><img src="assets/img/teacher-denis.jpg" alt="Денис Радищев"></div><div class="teacher-body"><h3>Денис Радищев</h3><div class="teacher-tags"><span class="teacher-tag">Внедрение ИИ в бизнес</span><span class="teacher-tag">AI-системы</span></div></div></div>
+      <div class="teacher-card fade-up"><div class="teacher-photo"><img src="assets/img/teacher-ksenia.png" alt="Ксения Чарушникова"></div><div class="teacher-body"><h3>Ксения Чарушникова</h3><div class="teacher-tags"><span class="teacher-tag">AI-дизайнер</span><span class="teacher-tag">100+ клиентов</span><span class="teacher-tag">Автоматизация контента</span></div></div></div>
+      <div class="teacher-card fade-up"><div class="teacher-photo"><img src="assets/img/teacher-ekaterina.jpg" alt="Екатерина Лазарева"></div><div class="teacher-body"><h3>Екатерина Лазарева</h3><div class="teacher-tags"><span class="teacher-tag">AI-креатор</span><span class="teacher-tag">Контент-специалист</span><span class="teacher-tag">Визуал + ИИ</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="args">
+  <div class="container">
+    <div class="args-header fade-up">
+      <div class="section-number" style="justify-content:center">08 — Почему завтра будет поздно</div>
+      <h2>Цифры, которые не оставляют выбора</h2>
+    </div>
+    <div class="args-grid">
+
+      <div class="args-column fade-up">
+        <div class="args-column-label">A · Рынок уходит без тебя</div>
+        <div class="args-stat">
+          <div class="args-number-row">
+            <div class="args-big-number">87%</div>
+          </div>
+          <div class="args-stat-text">компаний РФ уже используют или внедряют ИИ</div>
+          <div class="args-source">ВЦИОМ / Сбер, 2025</div>
+        </div>
+        <div class="args-stat">
+          <div class="args-number-row">
+            <div class="args-big-number">+45%</div>
+          </div>
+          <div class="args-stat-text">к зарплате у специалистов с навыками ИИ</div>
+          <div class="args-source">vs коллеги без навыков</div>
+        </div>
+        <div class="args-stat">
+          <div class="args-number-row">
+            <div class="args-big-number">4</div>
+            <div class="args-unit">из 10</div>
+          </div>
+          <div class="args-stat-text">вакансий в digital требуют навыков работы с нейросетями</div>
+          <div class="args-source">hh.ru, 2025</div>
+        </div>
+        <div class="args-quote">Пока ты думаешь — коллеги уже освоили</div>
+      </div>
+
+      <div class="args-column fade-up">
+        <div class="args-column-label">B · Время — деньги</div>
+        <div class="args-stat">
+          <div class="args-number-row">
+            <div class="args-big-number">3</div>
+            <div class="args-unit">часа в день</div>
+          </div>
+          <div class="args-stat-text">экономят сотрудники, использующие ИИ</div>
+          <div class="args-source">Microsoft Work Trend Index</div>
+        </div>
+        <div class="args-stat">
+          <div class="args-number-row">
+            <div class="args-big-number">×10</div>
+          </div>
+          <div class="args-stat-text">быстрее создание контента с нейросетями</div>
+          <div class="args-source">vs ручная работа</div>
+        </div>
+        <div class="args-stat">
+          <div class="args-number-row">
+            <div class="args-big-number">−70%</div>
+          </div>
+          <div class="args-stat-text">рутины в задачах аналитики, копирайтинга, дизайна</div>
+          <div class="args-source">отраслевые замеры</div>
+        </div>
+        <div class="args-quote">Каждый день без ИИ — потерянное время</div>
+      </div>
+
+      <div class="args-column fade-up">
+        <div class="args-column-label">C · Конкуренция растёт</div>
+        <div class="args-stat">
+          <div class="args-number-row">
+            <div class="args-big-number">150</div>
+            <div class="args-unit">млн</div>
+          </div>
+          <div class="args-stat-text">пользователей ChatGPT за 2 месяца — рекорд в истории продуктов</div>
+          <div class="args-source">OpenAI</div>
+        </div>
+        <div class="args-stat">
+          <div class="args-number-row">
+            <div class="args-big-number">$1,3</div>
+            <div class="args-unit">трлн</div>
+          </div>
+          <div class="args-stat-text">прогноз рынка генеративного ИИ к 2032</div>
+          <div class="args-source">Bloomberg Intelligence</div>
+        </div>
+        <div class="args-stat">
+          <div class="args-number-row">
+            <div class="args-big-number">3</div>
+            <div class="args-unit">месяца</div>
+          </div>
+          <div class="args-stat-text">новый прорывной инструмент: Midjourney, Sora, Claude, Gemini…</div>
+          <div class="args-source">темп индустрии</div>
+        </div>
+        <div class="args-quote">Поезд не просто ушёл — он разгоняется</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="cta-content fade-up">
+      <h2>Ты будешь в рядах наблюдателей или среди тех, кто заберёт своё раньше остальных?</h2>
+      <p class="cta-sub">Бесплатно · Офлайн · 1,5 часа · Москва</p>
+      <button type="button" class="btn-primary cta-btn" onclick="openSignup();"><span>Записаться</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<section class="value" id="contacts">
+  <div class="container">
+    <div class="value-header"><div class="section-number" style="justify-content:center">Контакты</div><h2>artTech в Москве</h2></div>
+    <div class="value-grid">
+      <div class="value-card"><h3>Адрес школы</h3><p style="margin-top:20px;line-height:1.6">Москва, пр. Мира 68с1 А,<br>4 этаж, пом. 502</p></div>
+      <div class="value-card"><h3>Позвоните нам</h3><p style="margin-top:20px"><a href="tel:+79031355219" style="color:inherit">+7 (903) 135-52-19</a></p></div>
+      <div class="value-card"><h3>Напишите нам</h3><p style="margin-top:20px;line-height:1.8"><a href="mailto:arttech.moscow@yandex.ru" style="color:inherit">arttech.moscow@yandex.ru</a><br><a href="https://t.me/arttech_school" target="_blank" rel="noopener" style="color:inherit">Telegram: @arttech_school</a></p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-org"><span>АНО ДО «НАСТАВНИКИ»</span><span>ОГРН 1212700018552</span><span>ИНН 2721252826</span><span>artTech · Москва</span></div>
+    <!-- Ссылки на документы добавить после адаптации к адресу московского сайта. -->
+
+    <p>© 2026 artTech · Школа профессий</p>
+  </div>
+</footer>
+
+<!-- SIGNUP MODAL -->
+<div class="modal-overlay" id="signupModal" onclick="if(event.target===this)closeSignup()">
+  <div class="modal modal-form">
+    <button type="button" class="modal-close" onclick="closeSignup()" aria-label="Закрыть">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-form-frame">
+      <iframe id="signupForm" src="about:blank" data-src="https://b24-edir5j.bitrix24site.ru/crm_form_q5gxk/" loading="lazy" title="Запись на занятие artTech в Москве"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+const observer=new IntersectionObserver((entries)=>{entries.forEach((entry,i)=>{if(entry.isIntersecting){setTimeout(()=>entry.target.classList.add('visible'),i*80);observer.unobserve(entry.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+const signupModal=document.getElementById('signupModal');
+const signupForm=document.getElementById('signupForm');
+function openSignup(){
+  signupModal.classList.add('active');
+  document.body.style.overflow='hidden';
+  if(signupForm.getAttribute('src')==='about:blank'){signupForm.src=signupForm.dataset.src;}
+
+}
+function closeSignup(){signupModal.classList.remove('active');document.body.style.overflow=''}
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&signupModal.classList.contains('active'))closeSignup()});
+</script>
+
+</body>
+</html>
